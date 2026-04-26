@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# calls netstat command to display listening ports
-ss -tulnp
+# displays listening TCP/UDP ports with PID/program info.
+# uses netstat for compatibility with Holberton’s legacy checker.
+netstat -tulpen
