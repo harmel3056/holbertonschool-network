@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Change localhost and facebook IP addresses
+HOSTS_FILE="/etc/hosts"
+TMP_FILE="/tmp/hosts.tmp"
+
+# Remove localhost and facebook.com entries and store output in temp file
+sed -e '/localhost/d' -e '/facebook\.com/d' "$HOSTS_FILE" > "$TMP_FILE"
+
+# Add mappings
+echo "127.0.0.2       localhost" >> "$TMP_FILE"
+echo "8.8.8.8         facebook.com" >> "$TMP_FILE"
+
+# Replace hosts file
+sudo cp "$TMP_FILE" "$HOSTS_FILE"
